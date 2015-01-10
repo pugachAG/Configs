@@ -4,7 +4,6 @@ using namespace std;
 
 int main()
 {
-    cout<<123;
 }"
 APP_SOURCE=main.cpp
 APP_NAME=app
@@ -23,7 +22,7 @@ FileRemoveIfExists() {
 FileCreateIfAbsent() {
     if ! [ -f $1 ]
     then
-        printf 'creating %s...\n' $1
+        printf 'Creating %s...\n' $1
         touch $1
     fi
 }
