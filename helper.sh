@@ -77,6 +77,10 @@ DoReset() {
     DoCreate
 }
 
+DoOpen() {
+    vim -O $APP_SOURCE $APP_INPUT
+}
+
 case $1 in
     -run|'')
         DoRunApp
@@ -89,6 +93,9 @@ case $1 in
         ;;
     -reset)
         DoReset
+        ;;
+    -open)
+        DoOpen
         ;;
     *)
         printf '%s: Unknown command\n' "$1" 
