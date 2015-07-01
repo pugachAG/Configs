@@ -10,6 +10,3 @@ Shell script for fast building and launching single source file c++ application.
 |-run        | build main.cpp and launch binary in case of successful build, stdin and stdout redirected to input.txt and output.txt 
 |-reset      | clear & create 
 |-open       | vim -O main.cpp input.txt
-
-###License
-MIT
