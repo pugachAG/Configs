@@ -1,0 +1,132 @@
+" Made depending on the example for a vimrc file.
+" Author of an example:	Bram Moolenaar <Bram@vim.org>
+
+" Use Vim settings, rather than Vi settings
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" set colorscheme
+colors delek 
+
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set tabstop=4                  " A tab is 4 spaces
+set expandtab                  " Always uses spaces instead of tabs
+set softtabstop=4              " Insert 4 spaces when tab is pressed
+set shiftwidth=4               " An indent is 4 spaces
+set smarttab                   " Indent instead of tab at start of line
+set shiftround                 " Round spaces to nearest shiftwidth multiple
+set nojoinspaces               " Don't convert spaces to tabs
+set autoindent
+set history=50                 " keep 50 lines of command line history
+set nobackup                   " do not keep a backup file
+set ruler                      " show the cursor position all the time
+set showcmd                    " display incomplete commands
+set relativenumber
+set number                     " show line numbers
+set hidden                     " hides files instead of closing
+set wildmenu                   " Encganced <Tab> in command mode
+set ignorecase                 " ignore case while searching
+set smartcase                  " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set autoread                   " automaticaly reread files change outside vim
+set autowrite
+set noswapfile
+
+syntax on
+set incsearch		        " do incremental searching
+set hlsearch			    " highlight search results
+
+set cindent
+set cinoptions=g-1
+
+" use , for <Leader>
+let mapleader = ","
+
+map <leader>w <C-W>
+
+
+" switch off highlighting with <Leader>/
+noremap <silent><Leader>/ :nohls<CR>
+
+" use ; instead of :
+noremap ; :
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" <F12> toggle paste
+set pastetoggle=<F12>
+
+" better navigating thought wraped lines
+nnoremap j gj
+nnoremap k gk
+
+" Arrow keys are EVIL
+map <Right> <Nop>
+map <Left>  <Nop>
+map <Up>    <Nop>
+map <Down>  <Nop>
+
+" automatically reload vimrc when it's saved
+au BufWritePost .vimrc so ~/.vimrc
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" enable mouse
+set mouse=a
+
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end() 
+
+
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+" 'cindent' is on in C files, etc.
+" Also load indent files, to automatically do language-dependent indenting.
+filetype plugin indent on
+filetype plugin on " enable plugins
+
+au FileType c,cpp setlocal comments-=:// comments+=f://
+
+" YCM
+nmap <leader>d :YcmCompleter GoToDeclaration<CR>
+
+" Enable the list of buffers
+let g:airline#extensions#bufferline#enabled = 1
+
+set laststatus=2
+set highlight+=s:MyStatusLineHighlight
+highlight MyStatusLineHighlight ctermbg=darkgray ctermfg=white
+
+set hidden
+
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+    au!
+
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+
+augroup END
