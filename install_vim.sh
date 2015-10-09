@@ -8,10 +8,11 @@ $APT_GET upgrade
 $APT_GET install libncurses5-dev libgnome2-dev libgnomeui-dev \
     libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-    ruby-dev mercurial
+    ruby-dev git 
 $APT_GET remove vim-tiny vim-common vim-gui-common
 
-hg clone https://code.google.com/p/vim/ $VIM_SRC
+git clone https://github.com/vim/vim.git $VIM_SRC
+
 cd $VIM_SRC
 ./configure --with-features=huge \
             --enable-multibyte \
