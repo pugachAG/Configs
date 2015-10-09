@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 APT_GET='sudo apt-get -y'
 VIM_SRC=$HOME/vim_src
 
