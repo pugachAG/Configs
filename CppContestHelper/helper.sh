@@ -1,3 +1,5 @@
+#!/bin/bash
+
 APP_SOURCE_CODE_TEMPLATE="#include <bits/stdc++.h>
 
 using namespace std;
