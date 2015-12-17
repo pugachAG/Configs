@@ -47,9 +47,6 @@ map <leader>w <C-W>
 " switch off highlighting with <Leader>/
 noremap <silent><Leader>/ :nohls<CR>
 
-" use ; instead of :
-noremap ; :
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -59,12 +56,6 @@ set pastetoggle=<F12>
 " better navigating thought wraped lines
 nnoremap j gj
 nnoremap k gk
-
-" Arrow keys are EVIL
-map <Right> <Nop>
-map <Left>  <Nop>
-map <Up>    <Nop>
-map <Down>  <Nop>
 
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
