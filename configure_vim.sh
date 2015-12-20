@@ -11,4 +11,4 @@ cp -r $VIM_DIR $HOME
 vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe
 sudo python2 ./install.py --clang-completer
-cp $CURRENT_DIR/.ycm_extra_conf.py $HOME
+cp $VIM_DIR/.ycm_extra_conf.py $HOME

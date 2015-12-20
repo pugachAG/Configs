@@ -1,6 +1,7 @@
 FROM phusion/baseimage
 
-ADD configure_container.sh /tmp/
-RUN sh /tmp/configure_container.sh
+ADD . /tmp/config/
+RUN sh /tmp/config/configure_container.sh
 
+ENV TERM xterm
 

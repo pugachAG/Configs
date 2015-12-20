@@ -2,9 +2,11 @@
 
 DEFAULT_USER=pugachag
 DEFAULT_PASS=Zaa123
+USER_HOME=/home/$DEFAULT_USER
 
 APT_GET='apt-get -y'
 VIM_SRC=/tmp/vim_src
+CURRENT_DIR=/tmp/config
 
 aptget_remove_pkgs() {
     for pkg in "$@"
@@ -27,7 +29,7 @@ aptget_update_upgrade() {
 }
 
 install_basic() {
-    aptget_install_pkgs git build-essential tmux python
+    aptget_install_pkgs git build-essential cmake tmux python
 }
 
 install_vim() {
@@ -51,14 +53,19 @@ install_vim() {
     rm -rf $VIM_SRC
 }
 
+configure_vim() {
+    su $DEFAULT_USER -c "cp -r $CURRENT_DIR/.vim $USER_HOME"
+}
+
 create_user() {
     echo "Creating user $DEFAULT_USER with password $DEFAULT_PASS"
     useradd -g sudo -m pugachag && echo "$DEFAULT_USER:$DEFAULT_PASS" | chpasswd
 }
 
 # Main
+create_user
 aptget_update_upgrade
 install_basic
 install_vim
-create_user
+configure_vim
 return 0
