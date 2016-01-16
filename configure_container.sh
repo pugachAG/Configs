@@ -29,7 +29,7 @@ aptget_update_upgrade() {
 }
 
 install_basic() {
-    aptget_install_pkgs git build-essential cmake tmux python
+    aptget_install_pkgs git build-essential cmake tmux python zsh
 }
 
 install_vim() {

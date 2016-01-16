@@ -19,7 +19,7 @@ build_image() {
 enter_container() {
     enter_vm
     docker start $CONTAINER_NAME
-    docker exec -ti -u $CONTAINER_USERNAME $CONTAINER_NAME /bin/bash
+    docker exec -ti -u $CONTAINER_USERNAME $CONTAINER_NAME script -q -c "zsh" /dev/null
 }
 
 clean_docker_data() {
