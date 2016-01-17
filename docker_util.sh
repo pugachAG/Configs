@@ -24,6 +24,7 @@ enter_container() {
 }
 
 clean_docker_data() {
+    enter_vm
     docker stop $CONTAINER_NAME
     docker rm $CONTAINER_NAME
     docker rmi $IMAGE_NAME
