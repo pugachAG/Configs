@@ -29,7 +29,10 @@ aptget_update_upgrade() {
 }
 
 install_basic() {
-    aptget_install_pkgs git build-essential cmake tmux python zsh
+    aptget_install_pkgs git build-essential cmake tmux python zsh wget
+    wget https://bootstrap.pypa.io/get-pip.py
+    python get-pip.py
+    rm get-pip.py
 }
 
 install_vim() {
