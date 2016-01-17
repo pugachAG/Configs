@@ -14,13 +14,13 @@ enter_vm() {
 build_image() {
     enter_vm
     docker build -t $IMAGE_NAME $1
-    docker run -d --name $CONTAINER_NAME $IMAGE_NAME
+    docker run -d --name $CONTAINER_NAME -v $HOME/lenaps_data:/home/$CONTAINER_USERNAME $IMAGE_NAME
 }
 
 enter_container() {
     enter_vm
     docker start $CONTAINER_NAME
-    docker exec -ti -u $CONTAINER_USERNAME -v $HOME/lenaps_data:/home/$CONTAINER_USERNAME $CONTAINER_NAME script -q -c "zsh" /dev/null
+    docker exec -ti -u $CONTAINER_USERNAME $CONTAINER_NAME script -q -c "zsh" /dev/null
 }
 
 clean_docker_data() {
