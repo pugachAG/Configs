@@ -14,7 +14,7 @@ enter_vm() {
 build_image() {
     enter_vm
     docker build -t $IMAGE_NAME $1
-    docker run -d --name $CONTAINER_NAME -v $HOME/lenaps_data:/home/$CONTAINER_USERNAME $IMAGE_NAME
+    docker run -d --name $CONTAINER_NAME -v $HOME/lenaps_data:/home/$CONTAINER_USERNAME/shared $IMAGE_NAME
 }
 
 enter_container() {
