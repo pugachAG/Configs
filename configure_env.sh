@@ -53,6 +53,7 @@ install_vim() {
                 --enable-gui=gtk2 --enable-cscope --prefix=/usr
     make VIMRUNTIMEDIR=/usr/share/vim/vim74
     make install
+    cd /
     rm -rf $VIM_SRC
 }
 
@@ -64,9 +65,13 @@ try_create_user() {
     if id -u "$DEFAULT_USER" >/dev/null 2>&1; then
         echo "User $DEFAULT_USER exists"
     else
-        echo "Creating user $DEFAULT_USER with password $DEFAULT_PASS"
-        useradd -g sudo -m pugachag && echo "$DEFAULT_USER:$DEFAULT_PASS" | chpasswd
+        echo "Creating user $DEFAULT_USER"
+        useradd -g sudo -m $DEFAULT_USER 
     fi
+}
+
+configure_user() {
+    chsh -s /bin/zsh $DEFAULT_USER
 }
 
 # Main
@@ -75,4 +80,5 @@ aptget_update_upgrade
 install_basic
 install_vim
 configure_vim
+configure_user
 return 0
