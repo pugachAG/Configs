@@ -2,18 +2,27 @@
 
 VM_NAME=lenaps-vm
 
+startvm() {
+    VBoxManage startvm $VM_NAME --type headless
+}
+
 setup() {
-    VBoxManage modifyvm myserver --natpf1 "ssh,tcp,,3022,,22"
+    VBoxManage modifyvm $VM_NAME --natpf1 "ssh,tcp,,3022,,22"
+    startvm
 }
 
 enter_ssh() {
-    ssh -p 3022 user@127.0.0.1
+    startvm
+    ssh -p 3022 ${1}@127.0.0.1
 }
 
 # Main
 case $1 in
-    enter|'')
-        enter_ssh
+    '')
+        enter_ssh pugachag
+        ;;
+    enter)
+        enter_ssh $2
         ;;
     configure)
         setup

@@ -58,12 +58,6 @@ install_vim() {
 
 configure_vim() {
     su $DEFAULT_USER -c "cp -r $CURRENT_DIR/.vim $USER_HOME"
-    # Configure plugins
-	vim +PluginInstall +qall
-	# YCM
-	cd $USER_HOME/.vim/bundle/YouCompleteMe
-	python2 ./install.py #--clang-completer
-	#cp $CURRENT_DIR/.ycm_extra_conf.py $HOME
 }
 
 try_create_user() {
