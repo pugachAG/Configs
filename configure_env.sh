@@ -82,4 +82,3 @@ install_basic
 install_vim
 configure_vim
 configure_user
-return 0
