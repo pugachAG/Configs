@@ -1,12 +1,12 @@
 #!/bin/bash
 
 DEFAULT_USER=pugachag
-DEFAULT_PASS=Zaa123
 USER_HOME=/home/$DEFAULT_USER
 
 APT_GET='apt-get -y'
 VIM_SRC=/tmp/vim_src
-CURRENT_DIR=/tmp/config
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 
 aptget_remove_pkgs() {
     for pkg in "$@"
@@ -58,15 +58,25 @@ install_vim() {
 
 configure_vim() {
     su $DEFAULT_USER -c "cp -r $CURRENT_DIR/.vim $USER_HOME"
+    # Configure plugins
+	vim +PluginInstall +qall
+	# YCM
+	cd $USER_HOME/.vim/bundle/YouCompleteMe
+	python2 ./install.py #--clang-completer
+	#cp $CURRENT_DIR/.ycm_extra_conf.py $HOME
 }
 
-create_user() {
-    echo "Creating user $DEFAULT_USER with password $DEFAULT_PASS"
-    useradd -g sudo -m pugachag && echo "$DEFAULT_USER:$DEFAULT_PASS" | chpasswd
+try_create_user() {
+    if id -u "$DEFAULT_USER" >/dev/null 2>&1; then
+        echo "User $DEFAULT_USER exists"
+    else
+        echo "Creating user $DEFAULT_USER with password $DEFAULT_PASS"
+        useradd -g sudo -m pugachag && echo "$DEFAULT_USER:$DEFAULT_PASS" | chpasswd
+    fi
 }
 
 # Main
-create_user
+try_create_user
 aptget_update_upgrade
 install_basic
 install_vim

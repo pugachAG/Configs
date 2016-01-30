@@ -1,0 +1,21 @@
+#!/bin/bash
+
+VM_NAME=lenaps-vm
+
+setup() {
+    VBoxManage modifyvm myserver --natpf1 "ssh,tcp,,3022,,22"
+}
+
+enter_ssh() {
+    ssh -p 3022 user@127.0.0.1
+}
+
+# Main
+case $1 in
+    enter|'')
+        enter_ssh
+        ;;
+    configure)
+        setup
+        ;;
+esac
