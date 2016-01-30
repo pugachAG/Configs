@@ -75,6 +75,7 @@ configure_user() {
 }
 
 # Main
+git submodule update --init --recursive
 try_create_user
 aptget_update_upgrade
 install_basic
