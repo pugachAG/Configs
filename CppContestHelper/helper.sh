@@ -4,8 +4,7 @@ APP_SOURCE_CODE_TEMPLATE="#include <bits/stdc++.h>
 
 using namespace std;
 
-int main()
-{
+int main() {
 }"
 APP_SOURCE=main.cpp
 APP_NAME=app
