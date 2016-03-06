@@ -18,8 +18,13 @@ setup() {
     startvm
 }
 
+start_clip_serv() {
+    nohup clip_serv.py >/dev/null 2>&1 &
+}
+
 enter_ssh() {
     startvm
+    start_clip_serv
     ssh -p 3022 ${1}@127.0.0.1
 }
 
