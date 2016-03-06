@@ -6,8 +6,15 @@ startvm() {
     VBoxManage startvm $VM_NAME --type headless
 }
 
+forward_port() {
+    VBoxManage modifyvm $VM_NAME --natpf1 "nat-port$1,tcp,,$1,,$2"
+}
+
 setup() {
-    VBoxManage modifyvm $VM_NAME --natpf1 "ssh,tcp,,3022,,22"
+    forward_port 3022 22
+    for i in {8000..8999}; do
+        forward_port $i $i
+    done
     startvm
 }
 
