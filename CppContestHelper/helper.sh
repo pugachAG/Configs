@@ -83,21 +83,28 @@ DoOpen() {
     vim -O $APP_SOURCE $APP_INPUT
 }
 
+DoCopy() {
+    curl -X POST http://10.0.2.2:7777 --data-binary @$APP_SOURCE
+}
+
 case $1 in
-    -run|'')
+    run|'')
         DoRunApp
         ;;
-    -clear)
+    clear)
         DoClear
         ;;
-    -create)
+    create)
         DoCreate
         ;;
-    -reset)
+    reset)
         DoReset
         ;;
-    -open)
+    open)
         DoOpen
+        ;;
+    copy)
+        DoCopy
         ;;
     *)
         printf '%s: Unknown command\n' "$1" 
