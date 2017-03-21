@@ -1,4 +1,1 @@
 # Configs
-
-###License
-MIT
