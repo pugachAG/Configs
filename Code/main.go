@@ -88,7 +88,7 @@ func (a Ints64) Len() int           { return len(a) }
 func (a Ints64) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a Ints64) Less(i, j int) bool { return a[i] < a[j] }
 
-/* Sort tempalte
+/* Sort template
 func (a ) Len() int           { return len(a) }
 func (a ) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a ) Less(i, j int) bool { return  }
