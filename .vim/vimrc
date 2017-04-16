@@ -76,12 +76,6 @@ filetype plugin on " enable plugins
 
 au FileType c,cpp setlocal comments-=:// comments+=f://
 
-" YCM
-nmap <leader>d :YcmCompleter GoToDeclaration<CR>
-
-" Enable the list of buffers
-let g:airline#extensions#bufferline#enabled = 1
-
 set laststatus=2
 set highlight+=s:MyStatusLineHighlight
 highlight MyStatusLineHighlight ctermbg=darkgray ctermfg=white
