@@ -70,10 +70,6 @@ try_create_user() {
     fi
 }
 
-configure_user() {
-    chsh -s /bin/zsh $DEFAULT_USER
-}
-
 # Main
 git submodule update --init --recursive
 try_create_user
@@ -81,4 +77,3 @@ aptget_update_upgrade
 install_basic
 install_vim
 configure_vim
-configure_user
