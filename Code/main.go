@@ -1,12 +1,12 @@
 package main
 
 import (
-	_ "bufio"
-	_ "fmt"
-	_ "math"
-	_ "os"
-	_ "sort"
-	_ "strconv"
+	"bufio"
+	"fmt"
+	"math"
+	"os"
+	"sort"
+	"strconv"
 )
 
 func solve() {
