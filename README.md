@@ -6,6 +6,7 @@
 
 * gnome-tweak-tool
 * chrome-gnome-shell
+* rxvt rxvt-unicode
 
 ### gnome
 
