@@ -64,9 +64,6 @@ au BufWritePost .vimrc so ~/.vimrc
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" enable mouse
-set mouse=a
-
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
 " 'cindent' is on in C files, etc.
